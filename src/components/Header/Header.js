@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.scss';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <div>
             <header className="header">
@@ -19,7 +19,7 @@ const Header = () => {
                     </div>
 
                     <div className="header__right">
-                        <div className="header__carst_box">
+                        <div className="header__carst_box" onClick={props.openRightSite}>
                             <img className="header__carts" src="./images/icons/carts.svg" alt="carts"/>
                             <span className="header__carts_price">
                 1205 руб.

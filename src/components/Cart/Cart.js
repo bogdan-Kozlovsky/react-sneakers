@@ -1,22 +1,43 @@
 import React from 'react';
 
-const Cart = () => {
+const Cart = ({imgUrl, title, price, onPlus, onFavorite}) => {
+
+    const [isAdded, setIsAdded] = React.useState(false);
+    const onClickPlus = () => {
+        onPlus({imgUrl, title, price});
+        setIsAdded(!isAdded);
+    }
+
+
+    const [isFavorite, setIsFavorite] = React.useState(false);
+    const onClickFavorite = () => {
+        onFavorite();
+        setIsFavorite(!isFavorite);
+    }
+
     return (
         <li className="cart__item">
-            <img className="cart__img" src="./images/cartImg/1.png" alt="images"/>
+            <img className="cart__img" src={imgUrl} alt="images"/>
+            <img onClick={onClickFavorite} className="cart__likes" src={
+                isFavorite ?
+                    "./images/icons/active_like.svg" :
+                    "./images/icons/like.svg"}
+                 alt="active_likes"/>
             <p className="cart__descr">
-                Мужские Кроссовки Nike Blazer Mid Suede
+                {title}
             </p>
             <div className="cart__box">
                 <div className="cart__box_price">
-                    <span>
-                        Цена:
-                    </span>
-                    <p>
-                        12 999 руб.
-                    </p>
+                    <span>Цена:</span>
+                    <p>{price} руб.</p>
                 </div>
-                <img className="cart__active" src="./images/icons/plus.svg" alt="plus"/>
+                <img
+                    className="cart__active"
+                    onClick={onClickPlus}
+                    src={isAdded ?
+                        "./images/icons/active_like.svg" :
+                        "./images/icons/plus.svg"}
+                    alt="plus"/>
             </div>
         </li>
     );

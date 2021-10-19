@@ -1,5 +1,4 @@
 .rightsite {
-  display: none;
   position: absolute;
   left: 0;
   top: 0;
@@ -19,11 +18,21 @@
     flex-direction: column;
   }
 
-  &__title {
+  &__body_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 30px;
+  }
+
+  &__title {
     font-weight: bold;
     font-size: 24px;
     line-height: 29px;
+  }
+
+  &__close {
+    cursor: pointer;
   }
 
   &__box {
@@ -126,6 +135,4 @@
       transition: all 0.5s;
     }
   }
-
-
 }

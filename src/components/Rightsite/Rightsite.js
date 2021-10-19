@@ -1,45 +1,41 @@
 import React from 'react';
 import './rightsite.scss'
-const Rightsite = () => {
+
+
+const Rightsite = ({closeRightSite, addCart = []}) => {
     return (
 
         <div className="rightsite">
             <div className="rightsite__body">
-                <h2 className="rightsite__title">
-                    Корзина
-                </h2>
+                <div className="rightsite__body_box">
+                    <h2 className="rightsite__title">
+                        Корзина
+                    </h2>
+                    <img className="rightsite__close" src="./images/icons/rightsite_close.svg" alt="close"
+                         onClick={closeRightSite}/>
+                </div>
                 <div className="rightsite__box">
-                    <div className="rightsite__cart">
-                        <div className="rightsite__inner">
-                            <img className="rightsite__cart_img" src="./images/cartImg/1.png" alt="cart"/>
-                            <div className="rightsite__cart_descr">
-                                <p>
-                                    Мужские Кроссовки Nike Air Max 270
-                                </p>
-                                <span>
-                                    12 999 руб.
-                                </span>
-                            </div>
-                            <img className="rightsite__cart_close" src="./images/icons/rightsite_close.svg"
-                                 alt="close"/>
-                        </div>
-                    </div>
 
-                    <div className="rightsite__cart">
-                        <div className="rightsite__inner">
-                            <img className="rightsite__cart_img" src="./images/cartImg/2.png" alt="cart"/>
-                            <div className="rightsite__cart_descr">
-                                <p>
-                                    Мужские Кроссовки Nike Air Max 270
-                                </p>
-                                <span>
-                                    12 999 руб.
-                                </span>
+                    {/*отрисовка карточки добавленого товара*/}
+                    {addCart.map(obj => {
+                        return (
+                            <div className="rightsite__cart">
+                                <div className="rightsite__inner">
+                                    <img className="rightsite__cart_img" src={obj.imgUrl} alt="cart"/>
+                                    <div className="rightsite__cart_descr">
+                                        <p>
+                                            {obj.title}
+                                        </p>
+                                        <span> {obj.price} руб. </span>
+                                    </div>
+                                    <img className="rightsite__cart_close" src="./images/icons/rightsite_close.svg"
+                                         alt="close"/>
+                                </div>
                             </div>
-                            <img className="rightsite__cart_close" src="./images/icons/rightsite_close.svg"
-                                 alt="close"/>
-                        </div>
-                    </div>
+                        );
+                    })}
+                    {/*отрисовка карточки добавленого товара*/}
+
                 </div>
 
                 <div className="rightsite__descr">
